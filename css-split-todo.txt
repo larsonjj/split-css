@@ -1,0 +1,6 @@
+css-split-todo.txt
+
+// TODO
+Clean up comment parsing in object if possible
+Give option to split each file more than once if passed 4095 selectors (for IE9 and below)
+Remove empty media queries
