@@ -39,7 +39,7 @@
 		<script type="text/javascript" src="js/cssbeautify.js"></script>
 		<script type="text/javascript" src="js/css.js"></script>
 		<script type="text/javascript">
-		$(function () 
+		$(function ()
 		{
 			// Show "Splitting..." when split button is clicked
 			$('#split').on('click', function () {
@@ -63,7 +63,7 @@
 			{
 				// Cache local copy of CSS
 				var css = css,
-				// Parse CSS String 
+				// Parse CSS String
 				sheet = new parse(css),
 				// Array of CSS rules that should be in the layout styles
 				layoutItems = ["margin","margin-left","margin-right","margin-top","margin-bottom","padding","padding-left","padding-right","padding-top","padding-bottom","float","display","visibility","width","max-width","min-width","height","position","top","bottom","left","right","text-align","text-indent","vertical-align","list-style-position","clear","overflow","z-index","border-spacing","content"],
@@ -82,10 +82,10 @@
 				hasMedia = false;
 				console.log(sheet);
 				/* Decipher Parse Object
-					sheet.stylesheet.rules[] = array containing all css rules	
+					sheet.stylesheet.rules[] = array containing all css rules
 
 					sheet.stylesheet.rules[].fullRule = each fully parsed CSS rule ex: .location { font-size: 14px; margin: 0; }
-					sheet.stylesheet.rules[].selectors.selector = Only rule name ex: '.location' or '#container'	
+					sheet.stylesheet.rules[].selectors.selector = Only rule name ex: '.location' or '#container'
 
 					sheet.stylesheet.rules[].declarations[] = Array that holds all rule declarations
 					sheet.stylesheet.rules[].declarations[].fullDec = fully declared rule ex: font-size: 14px;
@@ -100,7 +100,7 @@
 					cssText = [];
 					var ruleKind = sheet.stylesheet.rules[i];
 					// Reset booleans
-					if (sheet.stylesheet.rules[i].declarations == undefined) 
+					if (sheet.stylesheet.rules[i].declarations == undefined)
 					{
 						// Handle Comments
 						if (ruleKind.hasOwnProperty("comment")) {
@@ -122,13 +122,13 @@
 									layoutBuilder += "\r\n\r\n\t/*" + sheet.stylesheet.rules[i].rules[key].comment + "*/\r\n";
 									styleBuilder += "\r\n\r\n\t/*" + sheet.stylesheet.rules[i].rules[key].comment + "*/\r\n";
 								}
-								else 
+								else
 								{
 									// Need to clear arrays
 									mediaProperties = [];
 									mediaCssText = [];
 									layoutBuilder += sheet.stylesheet.rules[i].rules[key].selectors.selector + " {";
-									styleBuilder += sheet.stylesheet.rules[i].rules[key].selectors.selector + " {";								
+									styleBuilder += sheet.stylesheet.rules[i].rules[key].selectors.selector + " {";
 									// Iterate through all parameters
 									$.each(sheet.stylesheet.rules[i].rules[key].declarations, function (keyTwo)
 									{
@@ -137,14 +137,14 @@
 										// Iterate through all layout array items
 										mediaProperties[keyTwo] = sheet.stylesheet.rules[i].rules[key].declarations[keyTwo].property;
 										mediaCssText[keyTwo] = sheet.stylesheet.rules[i].rules[key].declarations[keyTwo].fullDec;
-									});								
+									});
 									$.each(mediaProperties, function (keyThree)
 									{
 										// Check to see if any rule matches a layout rule
 										if (mediaProperties[keyThree] in arrayToObject(layoutItems))
 										{
 											// Add all layout rule matches to a variable
-											layoutBuilder += mediaCssText[keyThree]; 
+											layoutBuilder += mediaCssText[keyThree];
 										}
 										else
 										{
@@ -228,7 +228,7 @@
 	        		readOnly: true,
 	        		cursorBlinkRate : 10000,
 	        		theme: ("default")
-				});		
+				});
 
 				var styleFormFormat = CodeMirror.fromTextArea(document.getElementById('css-style'), {
 					mode: "css",
@@ -239,7 +239,7 @@
 	        		readOnly: true,
 	        		cursorBlinkRate : 10000,
 	        		theme: ("default")
-				});	
+				});
 				function arrayToObject(a)
 				{
 				  var o = {};
@@ -256,7 +256,7 @@
 						{
 								//array[key] = "";
 						}
-						else if (array[key].indexOf("{}") > -1) 
+						else if (array[key].indexOf("{}") > -1)
 						{
 							array[key] = "";
 						};
@@ -274,7 +274,7 @@
 					for (var i = 0; i < units.length; i++) {
 						array = array.replace(" 0" + units[i],"0");
 					};
-					
+
 					return array;
 				}
 			}
